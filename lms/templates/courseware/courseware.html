@@ -57,8 +57,6 @@ ${static.get_page_title_breadcrumbs(course_name())}
 <%static:css group='style-student-notes'/>
 % endif
 
-<%block name="nav_skip">${"#content" if section_title else "#content"}</%block>
-
 <%include file="../discussion/_js_head_dependencies.html" />
   ${fragment.head_html()}
 </%block>
@@ -126,6 +124,7 @@ ${fragment.foot_html()}
 % endif
 
 <div class="container">
+    <main id="main" aria-label="content" tabindex="-1">
   <div class="course-wrapper" role="presentation">
 
 % if disable_accordion is UNDEFINED or not disable_accordion:
@@ -170,7 +169,7 @@ ${fragment.foot_html()}
 
     </div>
 % endif
-    <section class="course-content" id="course-content" role="main" aria-label="Content">
+    <section class="course-content" id="course-content">
         % if getattr(course, 'entrance_exam_enabled') and \
            getattr(course, 'entrance_exam_minimum_score_pct') and \
            entrance_exam_current_score is not UNDEFINED:
@@ -211,6 +210,7 @@ ${fragment.foot_html()}
     </section>
 
   </div>
+  </main>
 </div>
 <div class="container-footer">
   % if settings.FEATURES.get("LICENSING", False):
