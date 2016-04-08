@@ -9,7 +9,7 @@ describe 'FeedbackForm', ->
         callback()
 
     it 'binds to the #feedback_button', ->
-      expect($('#feedback_button')).toHandle 'click'
+      expect($('#feedback_button')).toEventHandle 'click'
 
     it 'post data to /send_feedback on click', ->
       $('#feedback_subject').val 'Awesome!'

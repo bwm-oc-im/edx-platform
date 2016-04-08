@@ -17,17 +17,17 @@ describe 'Calculator', ->
 
   describe 'bind', ->
     it 'bind the calculator button', ->
-      expect($('.calc')).toHandleWith 'click', @calculator.toggle
+      expect($('.calc')).toEventHandleWith 'click', @calculator.toggle
 
     it 'bind key up on calculator', ->
-      expect($('#calculator_wrapper')).toHandle 'keyup', @calculator.handleKeyUpOnHint
+      expect($('#calculator_wrapper')).toEventHandle 'keyup', @calculator.handleKeyUpOnHint
 
     it 'bind the help button', ->
       # This events is bind by $.click()
-      expect($('#calculator_hint')).toHandle 'click'
+      expect($('#calculator_hint')).toEventHandle 'click'
 
     it 'bind the calculator submit', ->
-      expect($('form#calculator')).toHandleWith 'submit', @calculator.calculate
+      expect($('form#calculator')).toEventHandleWith 'submit', @calculator.calculate
 
     xit 'prevent default behavior on form submit', ->
       jasmine.stubRequests()

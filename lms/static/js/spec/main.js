@@ -99,8 +99,8 @@
 
             // Common edx utils
             'common/js/utils/edx.utils.validate': 'xmodule_js/common_static/common/js/utils/edx.utils.validate',
-            'slick.grid': 'xmodule_js/common_static/js/vendor/slick.grid',
-            'slick.core': 'xmodule_js/common_static/js/vendor/slick.core'
+            'slick.core': 'xmodule_js/common_static/js/vendor/slick.core',
+            'slick.grid': 'xmodule_js/common_static/js/vendor/slick.grid'
         },
         shim: {
             'gettext': {

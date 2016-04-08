@@ -51,6 +51,7 @@ var files = [
     'xmodule_js/src/capa/*.js',
     'xmodule_js/src/video/*.js',
     'xmodule_js/src/xmodule.js',
+    'xmodule_js/common_static/js/libs/jasmine-matchers.js',
 
     // source files
     'coffee/src/**/*.js',
