@@ -357,11 +357,18 @@
                 deps: [ 'jquery', 'underscore', 'underscore.string', 'backbone', 'gettext' ],
                 init: function() {
                     // Set global variables that the payment code is expecting to be defined
-                    window._ = require('underscore');
-                    window._.str = require('underscore.string');
-                    window.edx = edx || {};
-                    window.edx.HtmlUtils = require('edx-ui-toolkit/js/utils/html-utils');
-                    window.edx.StringUtils = require('edx-ui-toolkit/js/utils/string-utils');
+                    require([
+                        'underscore',
+                        'underscore.string',
+                        'edx-ui-toolkit/js/utils/html-utils',
+                        'edx-ui-toolkit/js/utils/string-utils'
+                    ], function (_, str, HtmlUtils, StringUtils) {
+                        window._ = _;
+                        window._.str = str;
+                        window.edx = edx || {};
+                        window.edx.HtmlUtils = HtmlUtils;
+                        window.edx.StringUtils = StringUtils;
+                    });
                 }
             },
             'js/verify_student/views/intro_step_view': {
@@ -486,8 +493,10 @@
                 exports: 'DiscussionUtil',
                 init: function() {
                     // Set global variables that the discussion code is expecting to be defined
-                    window.Backbone = require('backbone');
-                    window.URI = require('URI');
+                    require(['backbone', 'URI'], function (Backbone, URI) {
+                        window.Backbone = Backbone;
+                        window.URI = URI;
+                    });
                 }
             },
             'xmodule_js/common_static/coffee/src/discussion/content': {
@@ -738,6 +747,16 @@
         'js/spec/learner_dashboard/sidebar_view_spec.js',
         'js/spec/learner_dashboard/program_card_view_spec.js'
     ];
+
+    //testFiles = [
+    //  'js/spec/verify_student/pay_and_verify_view_spec.js',
+    //    'js/spec/verify_student/reverify_view_spec.js',
+    //    'js/spec/verify_student/webcam_photo_view_spec.js',
+    //    'js/spec/verify_student/image_input_spec.js',
+    //    'js/spec/verify_student/review_photos_step_view_spec.js',
+    //    'js/spec/verify_student/make_payment_step_view_spec.js',
+    //    'js/spec/verify_student/make_payment_step_view_ab_testing_spec.js'
+    //];
 
     for (var i = 0; i < testFiles.length; i++) {
         testFiles[i] = '/base/' + testFiles[i];

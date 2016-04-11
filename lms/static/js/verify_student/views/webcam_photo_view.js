@@ -83,6 +83,15 @@
 
                 getUserMediaCallback: function( stream ) {
                     var video = this.getVideo();
+
+                    if(!video) {
+                        debugger;
+                        console.log('#####################################');
+                        console.log(this.video);
+                        console.log($( "#webcam_photo-tpl" ).html());
+                        console.log('#####################################');
+                    }
+
                     this.stream = stream;
                     video.src = this.URL.createObjectURL( stream );
                     video.play();
@@ -241,6 +250,7 @@
             // Set the submit button to disabled by default
             this.setSubmitButtonEnabled( false );
 
+            debugger;
             // Load the template for the webcam into the DOM
             renderedHtml = _.template($( this.template ).html())(
                 { backendName: this.backend.name }
