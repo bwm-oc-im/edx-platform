@@ -231,15 +231,6 @@ var DetailsView = ValidatingView.extend({
                 this.setField(event);
             }
             break;
-        case 'course-language':
-        case 'course-effort':
-        case 'course-title':
-        case 'course-subtitle':
-        case 'course-duration':
-        case 'course-description':
-        case 'course-short-description':
-            this.setField(event);
-            break;
         case 'pre-requisite-course':
             var value = $(event.currentTarget).val();
             value = value == "" ? [] : [value];
@@ -265,6 +256,15 @@ var DetailsView = ValidatingView.extend({
             // Fallthrough to handle both radio buttons
         case 'course-pace-instructor-paced':
             this.model.set('self_paced', JSON.parse(event.currentTarget.value));
+            break;
+        case 'course-language':
+        case 'course-effort':
+        case 'course-title':
+        case 'course-subtitle':
+        case 'course-duration':
+        case 'course-description':
+        case 'course-short-description':
+            this.setField(event);
             break;
         default: // Everything else is handled by datepickers and CodeMirror.
             break;
