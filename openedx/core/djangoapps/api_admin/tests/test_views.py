@@ -23,7 +23,7 @@ class ApiRequestViewTest(ApiAdminTest):
 
     def setUp(self):
         super(ApiRequestViewTest, self).setUp()
-        self.url = reverse('api-request')
+        self.url = reverse('api_admin:api-request')
         password = 'abc123'
         self.user = UserFactory(password=password)
         self.client.login(username=self.user.username, password=password)
@@ -46,14 +46,14 @@ class ApiRequestViewTest(ApiAdminTest):
         """
         ApiAccessRequestFactory(user=self.user)
         response = self.client.get(self.url)
-        self.assertRedirects(response, reverse('api-status'))
+        self.assertRedirects(response, reverse('api_admin:api-status'))
 
     def _assert_post_success(self, response):
         """
         Assert that a successful POST has been made, that the response
         redirects correctly, and that the correct object has been created.
         """
-        self.assertRedirects(response, reverse('api-status'))
+        self.assertRedirects(response, reverse('api_admin:api-status'))
         api_request = ApiAccessRequest.objects.get(user=self.user)
         self.assertEqual(api_request.status, ApiAccessRequest.PENDING)
         return api_request
@@ -93,7 +93,7 @@ class ApiRequestStatusViewTest(ApiAdminTest):
         password = 'abc123'
         self.user = UserFactory(password=password)
         self.client.login(username=self.user.username, password=password)
-        self.url = reverse('api-status')
+        self.url = reverse('api_admin:api-status')
 
     def test_get_without_request(self):
         """
@@ -101,7 +101,7 @@ class ApiRequestStatusViewTest(ApiAdminTest):
         redirected to the API request form.
         """
         response = self.client.get(self.url)
-        self.assertRedirects(response, reverse('api-request'))
+        self.assertRedirects(response, reverse('api_admin:api-request'))
 
     def test_get_with_request(self):
         """

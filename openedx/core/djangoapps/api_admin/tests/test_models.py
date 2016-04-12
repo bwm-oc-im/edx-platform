@@ -8,6 +8,7 @@ from django.test import TestCase
 import mock
 import unittest
 
+from microsite_configuration.tests.factories import SiteFactory
 from openedx.core.djangoapps.api_admin.models import ApiAccessRequest, ApiAccessConfig
 from openedx.core.djangoapps.api_admin.models import log as model_log
 from openedx.core.djangoapps.api_admin.tests.factories import ApiAccessRequestFactory
@@ -83,7 +84,7 @@ class ApiAccessRequestSignalTests(TestCase):
     def setUp(self):
         super(ApiAccessRequestSignalTests, self).setUp()
         self.user = UserFactory()
-        self.api_access_request = ApiAccessRequest(user=self.user, base_url="http://example.com")
+        self.api_access_request = ApiAccessRequest(user=self.user, site=SiteFactory())
         self.send_new_pending_email_function = 'openedx.core.djangoapps.api_admin.models._send_new_pending_email'
         self.send_decision_email_function = 'openedx.core.djangoapps.api_admin.models._send_decision_email'
 
@@ -130,7 +131,7 @@ class ApiAccessRequestSignalTests(TestCase):
 
         # Verify that initial save logs email errors properly
         mock_model_log_exception.assert_called_once_with(
-            'Error sending API request email for request from [%s].', self.api_access_request.user.username
+            'Error sending API user notification email for request [%s].', self.api_access_request.id
         )
         # Verify object saved
         self.assertIsNotNone(self.api_access_request.id)
