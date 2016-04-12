@@ -83,15 +83,6 @@
 
                 getUserMediaCallback: function( stream ) {
                     var video = this.getVideo();
-
-                    if(!video) {
-                        debugger;
-                        console.log('#####################################');
-                        console.log(this.video);
-                        console.log($( "#webcam_photo-tpl" ).html());
-                        console.log('#####################################');
-                    }
-
                     this.stream = stream;
                     video.src = this.URL.createObjectURL( stream );
                     video.play();
@@ -165,7 +156,7 @@
                         '<object type="application/x-shockwave-flash" ' +
                             'id="flash_video" ' +
                             'name="flash_video" ' +
-                            'data="/static/js/verify_student/CameraCapture.swf" ' +
+                            'data="js/verify_student/CameraCapture.swf" ' +
                             'width="500" ' +
                             'height="375">' +
                          '<param name="quality" value="high">' +

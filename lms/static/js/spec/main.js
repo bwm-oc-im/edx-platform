@@ -550,13 +550,15 @@
             },
             'xmodule_js/common_static/coffee/src/discussion/views/discussion_thread_show_view': {
                 deps: [
-                    'xmodule_js/common_static/coffee/src/discussion/utils'
+                    'xmodule_js/common_static/coffee/src/discussion/utils',
+                    'xmodule_js/common_static/coffee/src/discussion/views/discussion_content_view'
                 ],
                 exports: 'DiscussionThreadShowView'
             },
             'xmodule_js/common_static/coffee/src/discussion/views/discussion_thread_view': {
                 deps: [
-                    'xmodule_js/common_static/coffee/src/discussion/utils'
+                    'xmodule_js/common_static/coffee/src/discussion/utils',
+                    'xmodule_js/common_static/coffee/src/discussion/views/discussion_content_view'
                 ],
                 exports: 'DiscussionThreadView'
             },
@@ -747,16 +749,6 @@
         'js/spec/learner_dashboard/sidebar_view_spec.js',
         'js/spec/learner_dashboard/program_card_view_spec.js'
     ];
-
-    //testFiles = [
-    //  'js/spec/verify_student/pay_and_verify_view_spec.js',
-    //    'js/spec/verify_student/reverify_view_spec.js',
-    //    'js/spec/verify_student/webcam_photo_view_spec.js',
-    //    'js/spec/verify_student/image_input_spec.js',
-    //    'js/spec/verify_student/review_photos_step_view_spec.js',
-    //    'js/spec/verify_student/make_payment_step_view_spec.js',
-    //    'js/spec/verify_student/make_payment_step_view_ab_testing_spec.js'
-    //];
 
     for (var i = 0; i < testFiles.length; i++) {
         testFiles[i] = '/base/' + testFiles[i];
