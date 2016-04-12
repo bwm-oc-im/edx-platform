@@ -203,9 +203,6 @@ var DetailsView = ValidatingView.extend({
 
     updateModel: function(event) {
         switch (event.currentTarget.id) {
-        case 'course-language':
-            this.setField(event);
-            break;
         case 'course-image-url':
             this.setField(event);
             var url = $(event.currentTarget).val();
@@ -216,9 +213,6 @@ var DetailsView = ValidatingView.extend({
             this.imageTimer = setTimeout(function() {
                 $('#course-image').attr('src', $(event.currentTarget).val());
             }, 1000);
-            break;
-        case 'course-effort':
-            this.setField(event);
             break;
         case 'entrance-exam-enabled':
             if($(event.currentTarget).is(":checked")){
@@ -237,18 +231,12 @@ var DetailsView = ValidatingView.extend({
                 this.setField(event);
             }
             break;
+        case 'course-language':
+        case 'course-effort':
         case 'course-title':
-            this.setField(event);
-            break;
         case 'course-subtitle':
-            this.setField(event);
-            break;
         case 'course-duration':
-            this.setField(event);
-            break;
         case 'course-description':
-            this.setField(event);
-            break;
         case 'course-short-description':
             this.setField(event);
             break;
